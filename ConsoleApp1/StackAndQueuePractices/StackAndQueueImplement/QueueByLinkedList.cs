@@ -45,36 +45,55 @@ namespace ConsoleApp1.StackAndQueuePractices.StackAndQueueImplement
                 First = newNode;
                 Last = newNode;
             }
+            else
+            {
+                Last.Next = newNode;
+                Last = newNode;
+            }
+
+            Length++;
         }
 
         public void Dequeue()
         {
-            
+            if(First == null)
+            {
+                return;
+            }
+
+            if(First == Last)
+            {
+                Last = null;
+            }
+            var holder = First;
+            First = First.Next;
+            Length--;
+            //如果你想要知道你Dequeue了什麼，return holder;
         }
     }
 
 
     internal class QueueByLinkedList
     {
-        static void Main()
-        {
-            //Stack -> google,udemy,youtube
-            //so 
-            //youtube
-            //udemy
-            //google
+        //static void Main()
+        //{
+        //    //Stack -> google,udemy,youtube
+        //    //so 
+        //    //youtube
+        //    //udemy
+        //    //google
 
-            /// Stack null
-            ///append -> [google]
-            ///append -> [google,udemy]
-            ///append -> [google,udemy,youtube]
-            var myStack = new MyStackByArrayList();
-            myStack.Push("google");
-            myStack.Push("udemy");
-            myStack.Push("youtube");
-            myStack.Pop();
-            var a = myStack.Peek();
-            Console.WriteLine(myStack);
-        }
+        //    /// Stack null
+        //    ///append -> [google]
+        //    ///append -> [google,udemy]
+        //    ///append -> [google,udemy,youtube]
+        //    var myStack = new MyQueue();
+        //    myStack.Enqueue("google");
+        //    myStack.Enqueue("udemy");
+        //    myStack.Enqueue("youtube");
+        //    myStack.Dequeue();
+        //    var a = myStack.Peek();
+        //    Console.WriteLine(myStack);
+        //}
     }
 }

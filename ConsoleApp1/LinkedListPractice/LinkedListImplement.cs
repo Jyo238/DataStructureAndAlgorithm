@@ -48,12 +48,12 @@ namespace ConsoleApp1.LinkedListPractice
 
     class LinkedListImplement
     {
-        static void Main(string[] args)
-        {
-            var myLinkedList = new MyLinkedList(10);
-            myLinkedList.Append(5);
-            myLinkedList.Append(16);
-            Console.WriteLine(myLinkedList);
-        }
+        //static void Main(string[] args)
+        //{
+        //    var myLinkedList = new MyLinkedList(10);
+        //    myLinkedList.Append(5);
+        //    myLinkedList.Append(16);
+        //    Console.WriteLine(myLinkedList);
+        //}
     }
 }
