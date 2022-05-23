@@ -61,29 +61,29 @@ namespace ConsoleApp1.StackAndQueuePractices.StackAndQueueImplement
 
     class QueueByStack
     {
-        public static void Main(String[] args)
-        {
-            var q = new MyQueueByStack();
+        //public static void Main(String[] args)
+        //{
+        //    var q = new MyQueueByStack();
 
-            q.Enqueue(1);
-            q.Enqueue(2);
-            q.Enqueue(3);
-            q.Enqueue(4);
-            var peek = q.Peek();
-            /* Dequeue items */
-            Console.Write(q.Dequeue());
-            Console.Write(q.Dequeue());
-            Console.WriteLine(q.Dequeue());
+        //    q.Enqueue(1);
+        //    q.Enqueue(2);
+        //    q.Enqueue(3);
+        //    q.Enqueue(4);
+        //    var peek = q.Peek();
+        //    /* Dequeue items */
+        //    Console.Write(q.Dequeue());
+        //    Console.Write(q.Dequeue());
+        //    Console.WriteLine(q.Dequeue());
 
-            q.Enqueue(5);
-            q.Enqueue(6);
-            q.Enqueue(7);
-            var peek2 = q.Peek();
-            Console.Write(q.Dequeue());
-        }
-        /// queue null
-        ///append -> [google]
-        ///append -> [google,udemy]
-        ///append -> [google,udemy,youtube]
+        //    q.Enqueue(5);
+        //    q.Enqueue(6);
+        //    q.Enqueue(7);
+        //    var peek2 = q.Peek();
+        //    Console.Write(q.Dequeue());
+        //}
+        ///// queue null
+        /////append -> [google]
+        /////append -> [google,udemy]
+        /////append -> [google,udemy,youtube]
     }
 }
