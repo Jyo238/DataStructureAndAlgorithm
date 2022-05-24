@@ -255,23 +255,23 @@ namespace ConsoleApp1.TreePractice.BinarySearchTree
 
 
 
-        static void Main(string[] args)
-        {
-            BinarySearchTree tree = new BinarySearchTree();
-            tree.Insert(9);
-            tree.Insert(4);
-            tree.Insert(6);
-            tree.Insert(20);
-            tree.Insert(170);
-            tree.Insert(15);
-            tree.Insert(1);
+        //static void Main(string[] args)
+        //{
+        //    BinarySearchTree tree = new BinarySearchTree();
+        //    tree.Insert(9);
+        //    tree.Insert(4);
+        //    tree.Insert(6);
+        //    tree.Insert(20);
+        //    tree.Insert(170);
+        //    tree.Insert(15);
+        //    tree.Insert(1);
 
-            var shouldBeFalse = tree.Lookup(10);
-            var shouldBeTrue = tree.Lookup(170);
+        //    var shouldBeFalse = tree.Lookup(10);
+        //    var shouldBeTrue = tree.Lookup(170);
 
-            tree.Remove(6);
-            tree.printTree(tree.root);
-            Console.WriteLine("Ok");
-        }
+        //    tree.Remove(6);
+        //    tree.printTree(tree.root);
+        //    Console.WriteLine("Ok");
+        //}
     }
 }

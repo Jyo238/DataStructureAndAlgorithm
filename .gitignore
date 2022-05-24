@@ -137,3 +137,4 @@ _NCrunch*
 .vs/DataStructureAndAlgorithm/v17/.futdcache.v1
 .vs/ProjectEvaluation/datastructureandalgorithm.metadata.v2
 .vs/ProjectEvaluation/datastructureandalgorithm.projects.v2
+*.vsidx
