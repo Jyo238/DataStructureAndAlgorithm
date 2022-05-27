@@ -31,7 +31,7 @@ namespace ConsoleApp1.RecursivePractices
 
             return result;
         }
-        //F(F(F(F(F(2)+1)))+F(4))
+        //O(2^n)
         static long FibonacciRecursive(int number)
         {
             if (number < 2) return number;
