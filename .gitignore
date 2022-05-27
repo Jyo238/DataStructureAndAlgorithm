@@ -138,3 +138,4 @@ _NCrunch*
 .vs/ProjectEvaluation/datastructureandalgorithm.metadata.v2
 .vs/ProjectEvaluation/datastructureandalgorithm.projects.v2
 *.vsidx
+.vs/DataStructureAndAlgorithm/DesignTimeBuild/.dtbcache.v2
