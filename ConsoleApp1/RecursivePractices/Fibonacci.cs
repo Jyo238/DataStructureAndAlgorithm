@@ -39,11 +39,11 @@ namespace ConsoleApp1.RecursivePractices
             return FibonacciRecursive(number-1) + FibonacciRecursive(number - 2);
         }
 
-        static void Main()
-        {
-            var answer= FibonacciIterative(6);
-            var a2 = FibonacciRecursive(6);
-            Console.WriteLine("OK");
-        }
+        //static void Main()
+        //{
+        //    var answer= FibonacciIterative(6);
+        //    var a2 = FibonacciRecursive(6);
+        //    Console.WriteLine("OK");
+        //}
     }
 }
