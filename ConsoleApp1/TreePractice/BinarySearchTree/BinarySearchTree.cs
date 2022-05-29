@@ -4,23 +4,23 @@ using System.Text;
 
 namespace ConsoleApp1.TreePractice.BinarySearchTree
 {
-    class BSTNode
+    class TreeNode
     {
-        public BSTNode Left { get; set; }
-        public BSTNode Right { get; set; }
-        public int Value { get; set; }
+        public TreeNode left { get; set; }
+        public TreeNode right { get; set; }
+        public int val { get; set; }
 
-        public BSTNode(int value)
+        public TreeNode(int value)
         {
-            Left = null;
-            Right = null;
-            Value = value;
+            left = null;
+            right = null;
+            this.val = value;
         }
     }
 
     class BinarySearchTree
     {
-        private BSTNode root;
+        public TreeNode root;
         public BinarySearchTree()
         {
             root = null;
@@ -28,7 +28,7 @@ namespace ConsoleApp1.TreePractice.BinarySearchTree
 
         public void Insert(int value)
         {
-            var newNode = new BSTNode(value);
+            var newNode = new TreeNode(value);
             if (root == null)
             {
                 root = newNode;
@@ -38,29 +38,29 @@ namespace ConsoleApp1.TreePractice.BinarySearchTree
             var currentNode = root;
             while (currentNode != null)
             {
-                if (currentNode.Value > value)
+                if (currentNode.val > value)
                 {
-                    if (currentNode.Left == null)
+                    if (currentNode.left == null)
                     {
-                        currentNode.Left = newNode;
+                        currentNode.left = newNode;
                         return;
                     }
-                    currentNode = currentNode.Left;
+                    currentNode = currentNode.left;
                 }
                 else
                 {
-                    if (currentNode.Right == null)
+                    if (currentNode.right == null)
                     {
-                        currentNode.Right = newNode;
+                        currentNode.right = newNode;
                         return;
                     }
-                    currentNode = currentNode.Right;
+                    currentNode = currentNode.right;
                 }
             }
         }
 
 
-        public BSTNode Lookup(int value)
+        public TreeNode Lookup(int value)
         {
             if (root == null)
             {
@@ -71,15 +71,15 @@ namespace ConsoleApp1.TreePractice.BinarySearchTree
             while (currentNode != null)
             {
 
-                if (currentNode.Value > value)
+                if (currentNode.val > value)
                 {
-                    currentNode = currentNode.Left;
+                    currentNode = currentNode.left;
                 }
-                else if(currentNode.Value < value)
+                else if(currentNode.val < value)
                 {
-                    currentNode = currentNode.Right;
+                    currentNode = currentNode.right;
                 }
-                else if (currentNode.Value == value)
+                else if (currentNode.val == value)
                 {
                     return currentNode;
                 }
@@ -97,138 +97,110 @@ namespace ConsoleApp1.TreePractice.BinarySearchTree
             }
 
             var nodeToRemove = root;
-            BSTNode parentNode = null;
-            while (nodeToRemove.Value != value)
+            TreeNode parentNode = null;
+            while (nodeToRemove.val != value)
             { //Searching for the node to remove and it's parent
                 parentNode = nodeToRemove;
-                if (value < nodeToRemove.Value)
+                if (value < nodeToRemove.val)
                 {
-                    nodeToRemove = nodeToRemove.Left;
+                    nodeToRemove = nodeToRemove.left;
                 }
-                else if (value > nodeToRemove.Value)
+                else if (value > nodeToRemove.val)
                 {
-                    nodeToRemove = nodeToRemove.Right;
+                    nodeToRemove = nodeToRemove.right;
                 }
             }
 
-            BSTNode replacementNode = null;
-            if (nodeToRemove.Right != null)
+            TreeNode replacementNode = null;
+            if (nodeToRemove.right != null)
             { //We have a Right node
-                replacementNode = nodeToRemove.Right;
-                if (replacementNode.Left == null)
+                replacementNode = nodeToRemove.right;
+                if (replacementNode.left == null)
                 { //We don't have a Left node
-                    replacementNode.Left = nodeToRemove.Left;
+                    replacementNode.left = nodeToRemove.left;
                 }
                 else
                 { //We have a have a Left node, lets find the leftmost
-                    BSTNode replacementParentNode = nodeToRemove;
-                    while (replacementNode.Left != null)
+                    TreeNode replacementParentNode = nodeToRemove;
+                    while (replacementNode.left != null)
                     {
                         replacementParentNode = replacementNode;
-                        replacementNode = replacementNode.Left;
+                        replacementNode = replacementNode.left;
                     }
-                    replacementParentNode.Left = null;
-                    replacementNode.Left = nodeToRemove.Left;
-                    replacementNode.Right = nodeToRemove.Right;
+                    replacementParentNode.left = null;
+                    replacementNode.left = nodeToRemove.left;
+                    replacementNode.right = nodeToRemove.right;
                 }
             }
-            else if (nodeToRemove.Left != null)
+            else if (nodeToRemove.left != null)
             {//We only have a Left node
-                replacementNode = nodeToRemove.Left;
+                replacementNode = nodeToRemove.left;
             }
 
             if (parentNode == null)
             {
                 root = replacementNode;
             }
-            else if (parentNode.Left == nodeToRemove)
+            else if (parentNode.left == nodeToRemove)
             { //We are a Left child
-                parentNode.Left = replacementNode;
+                parentNode.left = replacementNode;
             }
             else
             { //We are a Right child
-                parentNode.Right = replacementNode;
+                parentNode.right = replacementNode;
             }
         }
 
 
-        //public void Remove(int value)
-        //{
-        //    if (root == null)
-        //    {
-        //        return;
-        //    }
-        //    var nodeToRemove = root;
-        //    BSTNode parentNode = null;
-        //    while(nodeToRemove.Value != value)
-        //    {
-        //        //search value
-        //        parentNode = nodeToRemove;
-        //        if (value < nodeToRemove.Value)
-        //        {
-        //            nodeToRemove = nodeToRemove.Left;
-        //        }
-        //        else if (value > nodeToRemove.Value)
-        //        {
-        //            nodeToRemove = nodeToRemove.Right;
-        //        }
-        //    }
+        public List<int> BreadthFirstSearch()
+        {
+            var current = root;
+            var list = new List<int>();
+            var queue = new Queue<TreeNode>();
+            queue.Enqueue(root);
 
-        //    BSTNode replacementNode = null;
-        //    if(nodeToRemove.Right != null)
-        //    {
-        //        //Right side
-        //        //have a Right node
-        //        replacementNode = nodeToRemove.Right;
-        //        if(replacementNode.Left == null)
-        //        {
-        //            //don't have a Left node
-        //            replacementNode.Left = nodeToRemove.Left;
-        //        }
-        //        else
-        //        {
-        //            //have a have a Left node, lets find the leftmost
-        //            BSTNode replacementParentNode = nodeToRemove;
-        //            while (replacementNode.Left != null)
-        //            {
-        //                replacementParentNode = replacementNode;
-        //                replacementNode = replacementNode.Left;
-        //            }
-        //            replacementParentNode.Left = null;
-        //            replacementNode.Left = nodeToRemove.Left;
-        //            replacementNode.Right = nodeToRemove.Right;
-        //        }
-        //    }
-        //    else if(nodeToRemove.Left != null)
-        //    {
-        //        //We only have a Left node
-        //        replacementNode = nodeToRemove.Left;
-        //    }
+            while(queue.Count > 0)
+            {
+                current = queue.Dequeue();
+                list.Add(current.val);
+                if(current.left != null)
+                {
+                    queue.Enqueue(current.left);
+                }
+                if (current.right != null)
+                {
+                    queue.Enqueue(current.right);
+                }
+            }
+            return list;
 
-        //    if(parentNode != null)
-        //    {
-        //        root = replacementNode;
-        //    }
-        //    else if(parentNode.Left == nodeToRemove)
-        //    {
-        //        //Left child
-        //        parentNode.Left = replacementNode;
-        //    }
-        //    else
-        //    {
-        //        //Right child
-        //        parentNode.Right = replacementNode;
-        //    }
-        //}
+        }
+
+        public List<int> BreadthFirstSearchR(Queue<TreeNode> queues,List<int> list)
+        {
+            if (queues.Count == 0) return list;
+            var current = queues.Dequeue();
+            list.Add(current.val);
+            if(current.left != null)
+            {
+                queues.Enqueue(current.left);
+            }
+            if (current.right != null)
+            {
+                queues.Enqueue(current.right);
+            }
+
+            return BreadthFirstSearchR(queues, list);
+        }
 
 
         int COUNT = 5;
-        public void printTree(BSTNode node)
+        public void printTree(TreeNode node)
         {
             print2DUtil(root, 0);
         }
 
-        private void print2DUtil(BSTNode root, int space)
+        private void print2DUtil(TreeNode root, int space)
         {
             // Base case  
             if (root == null)
@@ -238,7 +210,7 @@ namespace ConsoleApp1.TreePractice.BinarySearchTree
             space += COUNT;
 
             // Process right child first  
-            print2DUtil(root.Right, space);
+            print2DUtil(root.right, space);
 
             // Print current node after space  
             // count  
@@ -247,10 +219,10 @@ namespace ConsoleApp1.TreePractice.BinarySearchTree
             {
                 Console.Write(" ");
             }
-            Console.Write(root.Value + "\n");
+            Console.Write(root.val + "\n");
 
             // Process left child  
-            print2DUtil(root.Left, space);
+            print2DUtil(root.left, space);
         }
 
 
@@ -266,11 +238,11 @@ namespace ConsoleApp1.TreePractice.BinarySearchTree
         //    tree.Insert(15);
         //    tree.Insert(1);
 
-        //    var shouldBeFalse = tree.Lookup(10);
-        //    var shouldBeTrue = tree.Lookup(170);
-
-        //    tree.Remove(6);
-        //    tree.printTree(tree.root);
+        //    var aaa = tree.BreadthFirstSearch();
+        //    var q = new Queue<BSTNode>();
+        //    var list = new List<int>();
+        //    q.Enqueue(tree.root);
+        //    var bbb = tree.BreadthFirstSearchR(q, list);
         //    Console.WriteLine("Ok");
         //}
     }

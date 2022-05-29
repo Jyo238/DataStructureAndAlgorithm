@@ -54,5 +54,10 @@ namespace ConsoleApp1.SortingPractices
         {
             ToQuickSort(array, 0, array.Length - 1);
         }
+
+        public int[] ToArray()
+        {
+            return array;
+        }
     }
 }
